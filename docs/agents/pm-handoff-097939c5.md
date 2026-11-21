@@ -1423,3 +1423,25 @@ Friction: #4727, Rsi #4694, Rsi #4704
 - 06:30Z: Re-review #5609 f103377f (Claude opus) ACCEPT ac6215be, no BLOCKER. Enqueued 3107. RELEASE-GATING follow-ups: #5628 P1 (preflight refuses a correct host install; exact-token substitution; simulated) -> launch worker as soon as #5586 lands; #5629 (plugin bin/ blocks claude.ai/Cowork per host docs; bare toolkit on PATH) reported up to GM, recorded on #4414. Also #5630 contract misses, #5631 stale PATH text + snippet says refused on unknown outcome. On land: close #5586 #5609 #5612 #5613 #5614; launch #5628 (+#5631 #5630); restart #4720 from c1435cc3 without the no-live caveat. Workers: d44bcb81 #4978 repair, d644c0f9 #5022 repair, 439f73b3 #4998. Closed serverless #5072 #5073 #5074.
 - 06:40Z PM d8ad2044 took the seat. #5586 LANDED b1d2bd48 (3108) after one gate red, flake #5632 (not reproduced, 30/30 alone). GM ruling on #5629: binaries leave bin/, explicit plugin-root path. Launched one worker for #5628+#5629+#5630; continued #4720 from c1435cc3. Held: #5631 (until #5628 lands, same payments.md), #5632 kaizen (capacity).
 - 06:55Z PAUSED by operator order (GM 7d1c62cf, directive 9eaaf607). Resume state is the handoff note on #4414. Landed this seat: #5586 b1d2bd48, #4998 18ed4eb5. Nothing running or queued.
+
+## Baton: PM d8ad2044 -> successor, 2026-11-21 (context 33% over the 30% rotation threshold)
+Skill: .claude/skills/rsi-project-manager/SKILL.md
+STATE: project PAUSED by operator directive 9eaaf607 since 2026-10-30. Launch nothing and enqueue nothing until the GM lifts it.
+- No workers, no pending launches, no queue entries. Rolling last seen at 18ed4eb5.
+- Full resume state: #4414 handoffs 4-7. The unlanded sources:
+  - #5022 fb92e867: ready.
+  - #4720 a4e506e3: needs review.
+  - #4978 3858ae18: DO NOT LAND. BLOCKER #5641; #5642 is undecided.
+  - #5628/#5629/#5630 6e034137: WIP, DO NOT ENQUEUE.
+- Open release gates: #5628 and #5629.
+- On resume:
+  - #4413: to-do 537407cb timed out; ask the GM for the Q2 ruling.
+  - #4382: to-do a010be89 timed out; L8 is not filed.
+- Dismissed by the operator: x402 gate 6c (#5115) and the OpenClaw npm cache to-do (#5158).
+- Wakes: only `rust-migration-health` (health_anomaly) is armed. It ignores the paused-stall Issues (8 listed) and the current Claude window key.
+- Reported up: Codex window exhausted (11-05), and the OpenRouter cap past warn ($80.62/$100, 11-18).
+- Kaizen:
+  - Filed: harness #7455 (stalled_issue ignores pause directives); window ignore key (overflow #5901, duplicate).
+  - Fixed: none. Open from this seat: #5632 (gate flake).
+- Chronic: #5455 false red recurred (job 3e08a572). The PM sandbox base is 1216 commits behind rolling: use detached worktrees for jobs.
+Friction: #7455
